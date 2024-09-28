@@ -19,7 +19,7 @@ websocket_url = f"wss://highrise.game/web/botapi?api_key={api_key}&room_id={room
 def on_message(ws, message):
     print("Received message:", message)
     msg_data = json.loads(message)
-    
+
     if msg_data.get('type') == 'chat':
         user_message = msg_data.get('message')
         if user_message.startswith('!play '):
@@ -42,7 +42,7 @@ def play_song(song_name):
     headers = {"Authorization": f"Bearer {token}"}
     response = requests.get(search_url, headers=headers)
     song_data = response.json()
-    
+
     if song_data['tracks']['items']:
         track = song_data['tracks']['items'][0]
         track_name = track['name']
